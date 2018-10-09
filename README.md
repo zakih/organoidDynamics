@@ -40,7 +40,7 @@ Time series analysis of sets of 2D organoid contours
 	1. resampleWithDensity.m
 	2. geom.m
 
-# 2.0 Point Distribution model (using MATLAB \~ 1 hr)
+# 2. Point Distribution model (using MATLAB \~ 1 hr)
 1. Run pdm_organoid_preprocessing.m to (~ 131s):
 	1. 'qArray.mat' (MATLAB cell)
 	2. 'qMatrix.mat' (MATLAB array)
@@ -55,7 +55,7 @@ Time series analysis of sets of 2D organoid contours
 	1. resampleWithConstantNumPoints.m
 	2. geom.m
 
-# 3.0 Feature extraction (using MATLAB \~ 5 min) 
+# 3. Feature extraction (using MATLAB \~ 5 min) 
 1. run featureExtraction_signalProcessing.m
 	* Exports DFT amplitudes and frequencies
 		*'DTFT_X_shift_Organoids.mat'
