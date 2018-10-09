@@ -1,5 +1,5 @@
 # organoidDynamics
-Time series analysis of sets of 2D organoid contours 
+Toolset for analyzing time series of 2D organoid contours. Developed by Dr. Zaki Hasnain. 
 
 # Instructions
 	* Follow the sequence in sections 1-5 to perform the analysis
