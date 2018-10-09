@@ -1,13 +1,13 @@
 # organoidDynamics
 Time series analysis of sets of 2D organoid contours 
 
-# Instructions: 
+# Instructions
 	* Follow the sequence in sections 1-5 to perform the analysis
 	* Organoid contour (x,y) time series are included in subdirectory 'data'
 	* Section 6 below contains optional scripts for visualizing 
 	* For visualizing, external code required is for plotting in MATLAB using a script called subaxis (Copyright (c) 2014, Aslak Grinsted) available on Mathworks
 
-# 0.0 source files
+# Source files
 1. MATLAB
 	1. preprocessing.m
 	2. resampleWithDensity.m
@@ -28,7 +28,7 @@ Time series analysis of sets of 2D organoid contours
 	4. plot_timeSeriesPlots.R
 	5. plot_perimeterVSarea.R
 
-# 1.0 Data Preprocessing (using MATLAB \~ 2 min)
+# 1. Data Preprocessing (using MATLAB \~ 2 min)
 1. Run preprocessing.m to perform the following functions:
 	1. Read sample basal/FGF2 raw data
 	2. Scale (default no scaling, set 'scalingFactor' at top to change this)
