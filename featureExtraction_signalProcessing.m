@@ -7,6 +7,7 @@ close all
 % Use to study data in Data\BoundaryCoordinates_basal &
 % Data\BoundaryCoordinates_fgf2
 
+nOrganoidsTotal = 39;
  
 
 filename = 'AKF_16_08_31_TGFbInhTL_'; % List of all image folders which have image series in them
@@ -105,10 +106,10 @@ clearvars ii timeSeriesi organoidName type tempCell i numTotalFilesMax dataDirec
 
 % Load z = x + iy for all data
 load('zAllOrganoids.mat')
-XAll = cell(263,40);
-fAll = cell(263,40);
-for o = 1:40
-    organoidNum = o; % i =1,...,40
+XAll = cell(263,nOrganoidsTotal);
+fAll = cell(263,nOrganoidsTotal);
+for o = 1:nOrganoidsTotal
+    organoidNum = o; % i =1,...,nOrganoidsTotal
     disp(['Organoid number: ' num2str(o) ]);
     organoidName = allOrganoids{organoidNum,1};
     imageIndices = find(contains(fileLog(:,1),organoidName)); % index of all organoid i's images

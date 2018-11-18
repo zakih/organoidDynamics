@@ -7,6 +7,7 @@
 clc
 clear all
 close all
+nOrganoidsTotal = 39;
 
 filename = 'AKF_16_08_31_TGFbInhTL_'; % List of all image folders which have image series in them
 
@@ -157,7 +158,7 @@ organoidNameList = allOrganoids(:,1);
 %% Make Q-matrix of contours: numTimePoints x numOrganoids array of contour vectors 'q'
 
 numTimePoints = 261;
-numOrganoids = 40;
+numOrganoids = nOrganoidsTotal;
 
 numPointsArray = zeros(numTimePoints,numOrganoids);
 numPointsReqd = 5000;

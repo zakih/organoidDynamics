@@ -12,6 +12,7 @@ close all
 scalingFactor = 1; % No scaling
 smooth = 1; % 1: smooth, 0: no smooth
 
+nOrganoidsTotal = 39;
 
 
 %%
@@ -112,12 +113,12 @@ clearvars ii timeSeriesi organoidName type tempCell i numTotalFilesMax dataDirec
 
 %%
 
-zAll = cell(263,40);
-densityHistory = zeros(263,40);
+zAll = cell(263,nOrganoidsTotal);
+densityHistory = zeros(263,nOrganoidsTotal);
 
 
-for o = 1:40
-    organoidNum = o; % i =1,...,40
+for o = 1:nOrganoidsTotal
+    organoidNum = o; % i =1,...,nOrganoidsTotal
     disp(['Organoid number: ' num2str(o) ]);
     organoidName = allOrganoids{organoidNum,1};
     imageIndices = find(contains(fileLog(:,1),organoidName)); % index of all organoid i's images

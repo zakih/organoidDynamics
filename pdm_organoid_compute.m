@@ -2,15 +2,15 @@ close all
 clear all
 clc
 
-
+nOrganoidsTotal = 39;
 
 %% 1. Load data
 
 load('qMatrix.mat')
 mkdir('pdm_data')
-savdir = 'D:\Dropbox\Research\Projects\JH_Cell_Shape\Paper1\JHCell_final_reproduction\pdm_data';
+savdir = 'D:\Dropbox\Research\Projects\JHCell_final_reproduction\pdm_data';
 
-for organoidNum = 1:40
+for organoidNum = 1:nOrganoidsTotal
     disp(organoidNum)
     % Single organoid sample (multiple time points)
     qMatrixOrganoid = qMatrix(:,organoidNum,:);
@@ -61,11 +61,11 @@ end
 
 
 %% Eigendecomposition statistics
-
-varExplained_1stMode = zeros(40,1);
-varExplained_3Modes = zeros(40,1);
-auc_5Modes = zeros(40,1);
-for organoidNum = 1:40
+nOrganoidsTotal = 39
+varExplained_1stMode = zeros(nOrganoidsTotal,1);
+varExplained_3Modes = zeros(nOrganoidsTotal,1);
+auc_5Modes = zeros(nOrganoidsTotal,1);
+for organoidNum = 1:nOrganoidsTotal
     
     fileName = ['eigenVals_' num2str(organoidNum) '.mat'];
     load(fileName)

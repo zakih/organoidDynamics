@@ -7,7 +7,7 @@
 % Load z = x + iy for all data
 load('zAllOrganoids.mat')
 %% test single contour
-organoid = 39;
+organoid = 37;
 zOrganoid = zAll(:,organoid);
 
 close all
@@ -43,7 +43,7 @@ end
 fontSize = 8;
 fontSizeTitle = 8;
 
-for organoid=4:40
+for organoid=1:39
     %   organoid = 1;
     if organoid <= 10
         type = 'Basal';
@@ -184,7 +184,7 @@ fontSizeTitle = 40;
 mkdir image_firstLast
 pFirst = [110 239 151; 242 113 201]/255;
 pLast = [8, 79, 31;99, 17, 73]/255;
-for organoid=1:40
+for organoid=1:39
     %   organoid = 1;
     if organoid <= 10
         type = 'Basal';
