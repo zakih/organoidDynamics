@@ -86,8 +86,8 @@ for (i in 1:dim(Data)[1]){
 }
 table(Data$colorAlphaTime)
 
-svg(filename= "area_perimeter_by_time.svg",width = 6, height = 6,bg = "transparent")
-# pdf("area_perimeter_by_time.pdf", width=6, height=6)
+# svg(filename= "area_perimeter_by_time.svg",width = 6, height = 6,bg = "transparent")
+pdf("area_perimeter_by_time.pdf", width=6, height=6)
 # tiff(filename = "area_perimeter_by_time.tif", width=6, height=6,units = "in",res = 400)
 
 

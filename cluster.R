@@ -4,8 +4,6 @@
 ptm <- proc.time()
 
 
-
-
 # install.packages("gplots")
 library('gplots')
 library(dendextend)
@@ -31,7 +29,7 @@ for (i in 1:dim(Data2Cluster)[1]){
 
 # 3. Select clustering parameters
 numFeatures = length(col2cluster);
-numTypes = 40;
+numTypes = 39;
 numTimePoints = 261;
 D = matrix(0,nrow = numTypes,ncol = numTypes)
 gType = 2 # 1: l1 loss, 2: l2 loss, 3: cosine similarity
@@ -202,7 +200,7 @@ yBottom = 1
 yTop = yBottom + delta
 x_i = 1
 clusterOrder<-order.dendrogram(dendroFeatures)
-for (i in 1:40){
+for (i in 1:39){
   # if (gType == 1){
   #   imNum = clusterOrder_l1_k6[i]
   # }else if (gType == 2){
@@ -259,7 +257,7 @@ clusterMemberShip$cluster[id4]<-4
 Data$organoidNum<-c(rep(0,dim(Data)[1]))
 Data$cluster<-c(rep(0,dim(Data)[1]))
 Data$clusterColors<-c(rep("",dim(Data)[1]))
-numTypes = 40
+numTypes = 39
 for (i in 1:numTypes){
   organoidName <- clusterMemberShip$organoidName[i]
   cluster <- clusterMemberShip$cluster[i]
@@ -388,8 +386,8 @@ DataClusterStatsT3$clusterLabels<-paste("C",DataClusterStatsT3$cluster,sep = "")
 # all boxplots
 # png(filename = "cluster_boxplots.png",width = 4, height = 12, units = "in", pointsize = 12,bg = "white",  res = 200)
 # tiff(filename = "cluster_boxplots.tif", width = 4, height = 12,units = "in", res = 400)
-svg(file = "cluster_boxplots.svg", width = 4, height = 12,bg="transparent")
-# pdf(file = "cluster_boxplots.pdf", width = 4, height = 12)
+# svg(file = "cluster_boxplots.svg", width = 4, height = 12,bg="transparent")
+pdf(file = "cluster_boxplots.pdf", width = 4, height = 12)
 # par(mfrow = c(6,1),  omi = c(0,0,0,0),mar=c(2.5, 5, 0.5, 1))
 par(omi = c(0,0,0,0),mar=c(2.5, 5, 0.5, 1),mgp = c(1,0.5,0))
 layout(matrix(c(1,2,3,4,5,6,7), 7, 1, byrow = TRUE), 

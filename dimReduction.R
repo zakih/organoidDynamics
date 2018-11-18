@@ -178,9 +178,7 @@ library(plyr)
 # png(filename = "PCA_grid.png",width = 7, height = 6.5, units = "in", pointsize = 12,bg = "white",  res = 300)
 # tiff(filename = "PCA_grid.tif",width = 7, height = 6.5, units = "in", res = 400)
 # pdf(file ="PCA_grid.pdf", width=6, height=6,bg = "transparent")
-postscript(file ="PCA_grid2.eps", width=6.1, height=6.1,bg = "transparent")
-
-
+# postscript(file ="PCA_grid2.eps", width=6.1, height=6.1,bg = "transparent")
 
 par(mfrow=c(2,2), mai = c(0, 0, 0, 0), omi = c(0.01,0,0,0),mar=c(0.8, 0.8, 0.2, 0.2)*4,mgp = c(2,1,0))
 
@@ -367,7 +365,6 @@ lines(X_basal[hpts, ],col = colBasalDark)
 # hpts <- c(hpts, hpts[1])
 # lines(X_basal[hpts, ],col = colBasalGradient[3])
 
-
 # By time:
 colFGF2First<-rgb(242, 113, 201,maxColorValue = 255)
 colFGF2Last<-rgb(99, 17, 73,maxColorValue = 255)
@@ -378,7 +375,6 @@ colfuncBasal <- colorRampPalette(c(colBasalFirst, colBasalLast))
 colBasalGradient<-colfuncBasal(nTimeGradients)
 colfuncFGF2 <- colorRampPalette(c(colFGF2First, colFGF2Last))
 colFGF2Gradient<-colfuncFGF2(nTimeGradients)
-
 
 DataReduced$colorAlphaTime<-DataReduced$colorAlpha
 for (i in 1:dim(DataReduced)[1]){
@@ -483,7 +479,7 @@ for (i in 1:dim(Data2Plot)[1]){
   Data2Plot$organoidName[i]<-nameEdited
 }
 
-numTypes = 40
+numTypes = 39
 organoidNames<-as.data.frame(table(Data2Plot$organoidName))
 sapply(organoidNames,class)
 organoidNames<-as.character(organoidNames$Var1)
@@ -551,7 +547,7 @@ par(mfrow=c(4,1), mai = c(0, 0, 0, 0), omi = c(0.01,0,0,0),mar=c(0.8, 0.8, 0.2, 
 # PC-1
 yMin = -6
 yMax = 6
-for (organoidNum in 1:40){
+for (organoidNum in 1:39){
   dataTemp <- Data2Plot[which(Data2Plot$organoidName == organoidNames[organoidNum]),c("PC1","PC2","PC3","PC4")]
   dataTemp$timePoint<-c(0:260)
   if (organoidNum < 10){
@@ -574,7 +570,7 @@ par(new = F)
 # PC-2
 yMin = -6
 yMax = 6
-for (organoidNum in 1:40){
+for (organoidNum in 1:39){
   dataTemp <- Data2Plot[which(Data2Plot$organoidName == organoidNames[organoidNum]),c("PC1","PC2","PC3","PC4")]
   dataTemp$timePoint<-c(0:260)
   if (organoidNum < 10){
@@ -596,7 +592,7 @@ par( new = F)
 # PC-3
 yMin = -4
 yMax = 4
-for (organoidNum in 1:40){
+for (organoidNum in 1:39){
   dataTemp <- Data2Plot[which(Data2Plot$organoidName == organoidNames[organoidNum]),c("PC1","PC2","PC3","PC4")]
   dataTemp$timePoint<-c(0:260)
   if (organoidNum < 10){
@@ -619,7 +615,7 @@ par( new = F)
 # PC-4
 yMin = -2
 yMax = 5
-for (organoidNum in 1:40){
+for (organoidNum in 1:39){
   dataTemp <- Data2Plot[which(Data2Plot$organoidName == organoidNames[organoidNum]),c("PC1","PC2","PC3","PC4")]
   dataTemp$timePoint<-c(0:260)
   if (organoidNum < 10){
@@ -655,3 +651,4 @@ rm(dataTemp,a,name,nameEdited,organoidNum,col,col_i)
 
 
 timeFinal <- proc.time() - ptm
+rm(ptm)

@@ -5,14 +5,21 @@ colBasalAlpha<-alpha(colBasal,a)
 colFGF2Alpha<-alpha(colFGF2,a)
 lineWidth = 0.5
 
+
+i = 7
+dataTemp<-Data[which(Data$organoidName %in% numFilesPerOrganoid$organoidName[i]),]
+summary(dataTemp$area)
+timeVec<-(dataTemp$timePoint*30)/60
+plot(timeVec,dataTemp$area,type = "l")
+     
 # Check number of files is correct
 numFilesPerOrganoid <-as.data.frame(table(Data$organoidName))
 colnames(numFilesPerOrganoid)<-c("organoidName","numFiles")
 
-svg(filename= "timeSeries_all.svg",width = 5.5, height = 8,bg = "transparent")
+# svg(filename= "timeSeries_all.svg",width = 5.5, height = 8,bg = "transparent")
 # pdf(file= "timeSeries_all.pdf",width = 5.5, height = 8)
 # tiff(filename = "timeSeries_all.tif",width = 5.5, height = 8, units = "in", res = 400)
-# png(filename = "timeSeries_all.png",width = 5.5, height = 8, units = "in", pointsize = 12,bg = "white",  res = 300)
+png(filename = "timeSeries_all.png",width = 5.5, height = 8, units = "in", pointsize = 12,bg = "white",  res = 300)
 
 # mai : c(bottom, left, top, right)
 par(mfrow=c(5,2), oma = c(0,0,0,0),mai = c(0.4,0.55,0.13,0.15),cex.axis=1)
@@ -112,7 +119,8 @@ lines(tt,fitBasal,col = colBasalDark,lwd = 2)
 fitFGF2<-a_fgf2*exp(b_fgf2*tt)
 lines(tt,fitFGF2,col = colFGF2Dark,lwd = 2)
 
-
+c(a_basal ,b_basal)
+c(a_fgf2 ,b_fgf2)
 
 par(new = F)
 
@@ -741,13 +749,13 @@ par(new = F)
 # # )
 # 
 # 
-# # 
+# #
 # # # Mean value
 # # mean_ah_Basal<-mean(Data$perCollinear[which(Data$treatmentType == "basal")])
 # # mean_ah_FGF2<-mean(Data$perCollinear[which(Data$treatmentType == "fgf2")])
 # # abline(mean_ah_Basal,0,col = colBasalDark,lwd = 2)
 # # abline(mean_ah_FGF2,0,col = colFGF2Dark,lwd = 2)
-# # 
+# #
 # # # Linear fit
 # # lmBasal = lm(perCollinear ~ timePoint, data = Data[which(Data$treatmentType == "basal"),])
 # # mBasal  = lmBasal$coefficients[2]
@@ -757,7 +765,7 @@ par(new = F)
 # # bFGF2   = lmFGF2$coefficients[1]
 # # abline(bBasal,mBasal,col = colBasalDark,lwd = 2)
 # # abline(bFGF2,mFGF2,col = colFGF2Dark,lwd = 2)
-# # 
+# #
 # 
 # # Exponential fit
 # y = Data$perCollinear[which(Data$treatmentType %in% 'basal')]
@@ -788,8 +796,17 @@ par(new = F)
 # fitFGF2<-a_fgf2*exp(b_fgf2*tt)
 # lines(tt,fitFGF2,col = colFGF2Dark,lwd = 2)
 # 
+# c(a_basal ,b_basal)
+# c(a_fgf2 ,b_fgf2)
 # 
 # par(new = F)
+
+
+
+
+
+
+
 
 #######  8. numModes #######  
 max(Data$numModes)
@@ -835,10 +852,12 @@ if (ylabels == 0 ){
 
 
 # # Mean value
-# mean_ah_Basal<-mean(Data$numModes[which(Data$treatmentType == "basal")])
-# mean_ah_FGF2<-mean(Data$numModes[which(Data$treatmentType == "fgf2")])
-# abline(mean_ah_Basal,0,col = colBasalDark,lwd = 2)
-# abline(mean_ah_FGF2,0,col = colFGF2Dark,lwd = 2)
+mean_ah_Basal<-mean(Data$numModes[which(Data$treatmentType == "basal")])
+mean_ah_FGF2<-mean(Data$numModes[which(Data$treatmentType == "fgf2")])
+c(mean_ah_Basal,mean_ah_FGF2)
+abline(mean_ah_Basal,0,col = colBasalDark,lwd = 2)
+abline(mean_ah_FGF2,0,col = colFGF2Dark,lwd = 2)
+rm(mean_ah_Basal,mean_ah_FGF2)
 
 # Linear fit
 lmBasal = lm(numModes ~ timePoint, data = Data[which(Data$treatmentType == "basal"),])
@@ -976,6 +995,7 @@ par(new = F)
 # fitFGF2<-a_fgf2*exp(b_fgf2*tt)
 # lines(tt,fitFGF2,col = colFGF2Dark,lwd = 2)
 # 
+
 
 #######  9a. Mode amplitude mean -log scale #######  
 xmin = 0
@@ -1137,7 +1157,8 @@ par(new = F)
 # 
 # 
 # 
-# 
+#
+
 
 #######  10a. Mode amplitude stdev log scale #######  
 xmin = 0
