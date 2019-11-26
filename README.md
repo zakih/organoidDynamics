@@ -27,6 +27,7 @@ Toolset for analyzing time series of 2D organoid contours. Developed by Dr. Zaki
 	3. cluster.R
 	4. plot_timeSeriesPlots.R
 	5. plot_perimeterVSarea.R
+	6. feature_correlations.R
 
 # 1. Data Preprocessing (using MATLAB \~ 2 min)
 1. Run preprocessing.m to perform the following functions:
@@ -88,7 +89,9 @@ Toolset for analyzing time series of 2D organoid contours. Developed by Dr. Zaki
 		* Outputs cluster membership as 'clusterMembership.csv'
 	3. extra plots
 
-# 6. Extra files
+# 6. Test the differences in feature means vs treatment type (using R \~ 20 seconds)
+1. Run feature_correlations.R to output table of t-test values and p-values for differences in feature means over a moving window of time span.
+# 7. Extra files
 1. Plot time series of contours
 	* xyTimeSeriesPlotter.m
 	* Can create three types of image sets:
