@@ -172,12 +172,12 @@ library('ggplot2')
 # install.packages('grid')
 library(grid)
 library(plyr)
-
+library(latex2exp)
 
 
 # png(filename = "PCA_grid.png",width = 7, height = 6.5, units = "in", pointsize = 12,bg = "white",  res = 300)
 # tiff(filename = "PCA_grid.tif",width = 7, height = 6.5, units = "in", res = 400)
-# pdf(file ="PCA_grid.pdf", width=6, height=6,bg = "transparent")
+pdf(file ="PCA_grid.pdf", width=6, height=6,bg = "transparent")
 # postscript(file ="PCA_grid2.eps", width=6.1, height=6.1,bg = "transparent")
 
 par(mfrow=c(2,2), mai = c(0, 0, 0, 0), omi = c(0.01,0,0,0),mar=c(0.8, 0.8, 0.2, 0.2)*4,mgp = c(2,1,0))
@@ -193,10 +193,9 @@ varTitles<-rownames(x)
                        # from=c("perimeter","area","Izz","perConvex","perCollinear","ampMean90","aaHullRatio","formFactor","numModes"), 
                        # to=c("P", "A", "J_zz","f_vex","f_col","A_90","a_h","a_f","N_90"))
 
-varTitles <- mapvalues(varTitles, 
-                       from=c("perimeter","area","Izz","perConvex","perConcave","ampMean90","aaHullRatio","formFactor","numModes"), 
-                       to=c("P", "A", "J_zz","f_vex","f_cav","A_90","a_h","a_f","N_90"))
-
+# varTitles <- mapvalues(varTitles,
+#                        from=c("perimeter","area","Izz","perConvex","perConcave","ampMean90","aaHullRatio","formFactor","numModes"),
+#                        to=c("P", "A", "J_zz","f_vex","f_cav","A_90","a_h","a_f","N_90"))
 
 
 x$var<-varTitles
@@ -211,6 +210,11 @@ colnames(xPC2)[1]<-"weights"
 x<-rbind(xPC1,xPC2)
 rownames(x)<-NULL
 x$PC<-as.factor(x$PC)
+
+texLabels<-c(parse(text = TeX("$A$")),parse(text = TeX("$P$")),parse(text = TeX("$a_f$")),parse(text = TeX("$a_h$")),parse(text = TeX("$J_{zz}$")),parse(text = TeX("$f_{vex}$")),parse(text = TeX("$f_{cav}$")),parse(text = TeX("$N_{90}$")),parse(text = TeX("$\\bar{A}_{90}$")))
+rowLabels <- mapvalues(x$var[1:9],
+                       from=c("area","perimeter","formFactor","aaHullRatio","Izz","perConvex","perConcave","numModes","ampMean90"),
+                       to=texLabels)
 
 
 # par(mfrow=c(1,1), mai = c(0, 0, 0, 0), omi = c(0.01,0,0,0),mar=c(0.8, 0.8, 0.2, 0.2)*4,mgp = c(2,1,0))
@@ -240,11 +244,10 @@ if (doLogData==0){
 p<-ggplot(data=x, aes(x=var, y=weights,fill = PC)) + coord_flip() +
   geom_bar(stat="identity", width=1, position=position_dodge())+
   theme_minimal()+ scale_fill_manual(values=c('gray10','gray50'))+
-  scale_x_discrete(limits = positions) +
+  scale_x_discrete(limits = positions,labels = rowLabels) +
   theme(text = element_text(size=10),axis.line=element_line(),
         panel.grid.major.x = element_line(color = "gray90",linetype = "solid"),panel.grid = element_blank(),
         legend.position="none")+ ylab("")+xlab("")
-
 # vp <- viewport(width = 0.7, height = 0.75, x = 0.6, y = 0.47)
 vp <- viewport(width = 0.4, height = 0.3, x = 0.3, y = 0.71)
 print(p, vp = vp)
