@@ -66,7 +66,10 @@ Toolset for analyzing time series of 2D organoid contours. Developed by Dr. Zaki
 		* 'allOrganoidFeatures.csv'
 	* Exports same data as MATLAB data
 		* 'allOrganoidFiles.mat'
-3. Functions used:
+3. Test the differences in feature means vs treatment type (using R \~ 20 seconds)
+	* Run feature_correlations.R to 
+		* output table of t-test values and p-values for differences in feature means over a moving window of time span.
+4. Functions used:
 	1. geom.m
 	2. getDetSign.m
 	3. getPmoi.m
@@ -89,9 +92,8 @@ Toolset for analyzing time series of 2D organoid contours. Developed by Dr. Zaki
 		* Outputs cluster membership as 'clusterMembership.csv'
 	3. extra plots
 
-# 6. Test the differences in feature means vs treatment type (using R \~ 20 seconds)
-1. Run feature_correlations.R to output table of t-test values and p-values for differences in feature means over a moving window of time span.
-# 7. Extra files
+
+# 6. Extra files
 1. Plot time series of contours
 	* xyTimeSeriesPlotter.m
 	* Can create three types of image sets:
