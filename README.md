@@ -4,6 +4,7 @@ Toolset for analyzing time series of 2D organoid contours. Developed by Dr. Zaki
 # Instructions
 	* Follow the sequence in sections 1-5 to perform the analysis
 	* Organoid contour (x,y) time series are included in subdirectory 'data'
+	* ACM.ijm file includes the function to extract contours from images
 	* Section 6 below contains optional scripts for visualizing 
 	* For visualizing, external code required is for plotting in MATLAB using a script called subaxis (Copyright (c) 2014, Aslak Grinsted) available on Mathworks
 
